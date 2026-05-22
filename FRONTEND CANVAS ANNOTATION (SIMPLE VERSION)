@@ -1,0 +1,7 @@
+<canvas
+  onClick={(e) => {
+    const x = e.nativeEvent.offsetX;
+    const y = e.nativeEvent.offsetY;
+    console.log("Point:", x, y);
+  }}
+/>
