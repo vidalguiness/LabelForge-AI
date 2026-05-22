@@ -1,0 +1,7 @@
+Frontend
+   ↓
+Backend API (Node.js)
+   ↓
+AI Service Layer (OpenAI / HuggingFace)
+   ↓
+Annotation DB (MongoDB)
