@@ -1,0 +1,22 @@
+const express = require("express");
+const router = express.Router();
+const { autoLabelText } = require("../services/aiLabelService");
+
+router.post("/auto-label", async (req, res) => {
+  try {
+    const { text } = req.body;
+
+    const result = await autoLabelText(text);
+
+    res.json({
+      success: true,
+      label: result.label,
+      confidence: result.confidence
+    });
+
+  } catch (err) {
+    res.status(500).json({ error: "AI labeling failed" });
+  }
+});
+
+module.exports = router;
