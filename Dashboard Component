@@ -1,0 +1,26 @@
+import { useEffect, useState } from "react";
+import { PieChart, Pie, Cell } from "recharts";
+
+export default function Dashboard() {
+  const [data, setData] = useState([]);
+
+  useEffect(() => {
+    fetch("http://localhost:5000/analytics/overview")
+      .then(res => res.json())
+      .then(res => setData(res.labelDistribution));
+  }, []);
+
+  return (
+    <div>
+      <h2>Annotation Analytics</h2>
+
+      <PieChart width={400} height={400}>
+        <Pie data={data} dataKey="count" nameKey="_id" outerRadius={120}>
+          {data.map((entry, index) => (
+            <Cell key={index} />
+          ))}
+        </Pie>
+      </PieChart>
+    </div>
+  );
+}
